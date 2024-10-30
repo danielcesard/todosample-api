@@ -32,7 +32,7 @@ public class UserService {
     }
 
     @Transactional
-    public User Update(User obj) {
+    public User update(User obj) {
          
         User newObj = findById(obj.getId());
         newObj.setPassword(obj.getPassword());
