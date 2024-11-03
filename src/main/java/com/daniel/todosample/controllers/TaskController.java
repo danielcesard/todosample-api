@@ -17,6 +17,7 @@ import com.daniel.todosample.models.User;
 import com.daniel.todosample.models.User.CreateUser;
 import com.daniel.todosample.models.User.UpdateUser;
 import com.daniel.todosample.services.TasckService;
+import com.daniel.todosample.services.UserService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,9 @@ public class TaskController {
     @Autowired
     private TasckService tasckService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/{id}")
     public ResponseEntity<Task> findById(@PathVariable Long id) {
         Task obj = this.tasckService.findById(id);
@@ -44,6 +48,7 @@ public class TaskController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Task>> findAllByUserId(@PathVariable Long userId) {
+        this.userService.findById(userId);
         List<Task> objs = this.tasckService.findAllByUserId(userId);
         return ResponseEntity.ok().body(objs);
     }
