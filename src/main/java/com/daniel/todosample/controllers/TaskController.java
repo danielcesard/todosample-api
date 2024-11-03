@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.daniel.todosample.models.Task;
-import com.daniel.todosample.models.User;
-import com.daniel.todosample.models.User.CreateUser;
-import com.daniel.todosample.models.User.UpdateUser;
 import com.daniel.todosample.services.TasckService;
 import com.daniel.todosample.services.UserService;
 
@@ -25,7 +22,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
