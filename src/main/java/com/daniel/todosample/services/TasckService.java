@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.daniel.todosample.models.Task;
 import com.daniel.todosample.models.User;
 import com.daniel.todosample.repositories.TaskRepository;
+import com.daniel.todosample.services.exceptions.DataBindingViolationException;
+import com.daniel.todosample.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TasckService {
@@ -24,7 +26,7 @@ public class TasckService {
         
         Optional<Task> task = this.taskRepository.findById(id);
         return task.orElseThrow(
-            () -> new RuntimeException("Tarefa não encontrada. Id: " + id + ", Tipo: " + Task.class.getName())
+            () -> new ObjectNotFoundException("Tarefa não encontrada. Id: " + id + ", Tipo: " + Task.class.getName())
         );
     }
 
@@ -58,7 +60,7 @@ public class TasckService {
         try {
             this.taskRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Não é possível excluir, pois há entidades relacionadas.");
+            throw new DataBindingViolationException("Não é possível excluir, pois há entidades relacionadas.");
         }
 
     }
