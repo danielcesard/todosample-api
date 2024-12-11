@@ -46,6 +46,7 @@ public class UserService {
     public User update(User obj) {
          
         User newObj = findById(obj.getId());
+        newObj.setPassword(obj.getPassword());
         newObj.setPassword(this.bCryptPasswordEncoder.encode(obj.getPassword()));
         return this.userRepository.save(newObj);
     }
